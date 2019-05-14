@@ -1,0 +1,48 @@
+page-carrinho {
+
+}
+.resumo-carrinho {
+  background-color: #E6E6E6;
+  height: 60px;
+
+
+  .item {
+    text-align: center;
+
+    .titulo {
+      font-size: 1.7rem;
+      color: #00236B;
+    }
+
+    .descricao {
+      font-size: 1.6rem;
+      margin-top: 5px;
+    }
+
+  }
+
+  .valor-bruto {
+
+    .descricao {
+      color: #17B978;
+    }
+
+  }
+
+  .valor-desconto {
+
+    .descricao {
+      color: #FA4659;
+    }
+
+  }
+
+  .valor-liquido {
+
+    .descricao {
+      color: #00236B;
+    }
+
+  }
+
+}

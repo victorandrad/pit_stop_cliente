@@ -1,5 +1,7 @@
 {
   "name": "pit_stop",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

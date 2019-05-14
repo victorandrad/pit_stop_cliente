@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Detalhes</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-grid>
+        <ion-row *ngFor="let dados of item">
+
+            <ion-col col-12 text-center>
+                <h2>{{dados.nome}}</h2>
+            </ion-col>
+            <ion-col col-12>
+                <p style="font-size: 1.7rem">Descrição: {{dados.descricao}}</p>
+            </ion-col>
+            <ion-col col-12 text-center>
+                <h3>Preço: {{dados.preco | currency:'BRL':'symbol':'0.2-2':'pt'}}</h3>
+            </ion-col>
+            <ion-col col-12>
+                <ion-item>
+                    <ion-label stacked>Observações</ion-label>
+                    <ion-textarea type="text" rows="3" [(ngModel)]="observacao"></ion-textarea>
+                </ion-item>
+            </ion-col>
+            <br/>
+
+            <ion-col col-4 icon-only text-left>
+                <button ion-button (click)="decrementa(dados.preco)" clear>
+                    <ion-icon name="remove-circle"></ion-icon>
+                </button>
+            </ion-col>
+            <ion-col col-4 text-center>
+                <p>{{quantidade}}</p>
+            </ion-col>
+            <ion-col col-4 icon-only text-right>
+                <button ion-button (click)="incrementa(dados.preco)" clear>
+                    <ion-icon name="add-circle"></ion-icon>
+                </button>
+            </ion-col>
+
+            <ion-col col-12 text-center>
+                <p style="font-size: 1.6rem">Preço total: {{preco_total | currency:'BRL':'symbol':'0.2-2':'pt'}}</p>
+            </ion-col>
+
+            <ion-col col-12 text-center>
+                <button ion-button full (click)="addCarrinho(dados)">Adicionar ao carrinho</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

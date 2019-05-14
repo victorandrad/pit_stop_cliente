@@ -1,0 +1,53 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Carrinho de compras</ion-title>
+        <ion-buttons end>
+            <button *ngIf="items_carrinho !== null"
+                    ion-button icon-only (click)="addPedido()">
+                <ion-icon name="checkmark"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-list>
+        <ion-item-sliding *ngFor="let dados of items_carrinho">
+            <ion-item>
+                <h2>{{dados.quantidade}} de {{dados.nome}}</h2>
+                <p text-wrap>{{dados.descricao}}</p>
+                <h2 text-center>Total: {{dados.preco_total | currency:'BRL':'symbol':'0.2-2':'pt'}}</h2>
+                <!--<ion-note item-right>{{dados.preco_total}}</ion-note>-->
+            </ion-item>
+
+            <ion-item-options side="right">
+                <button color="danger" ion-button (click)="excluiItemCarrinho(dados)">
+                    <ion-icon name="trash"></ion-icon>
+                </button>
+            </ion-item-options>
+
+        </ion-item-sliding>
+    </ion-list>
+
+</ion-content>
+
+<ion-footer class="resumo-carrinho">
+
+    <ion-grid>
+
+        <ion-row>
+
+            <ion-col class="item valor-bruto">
+
+                <div class="titulo">Total do Carrinho</div>
+
+                <div class="descricao">{{total_carrinho | currency:'BRL':'symbol':'0.2-2':'pt'}}</div>
+
+            </ion-col>
+
+        </ion-row>
+
+    </ion-grid>
+
+</ion-footer>
