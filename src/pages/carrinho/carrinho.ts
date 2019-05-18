@@ -79,17 +79,20 @@ export class CarrinhoPage {
             this.uid = data.uid;
         });
 
-        let item = this.ref_carrinho.child(this.uid).push();
-        item.set(
+        let item = this.ref_carrinho.push();
+        await item.set(
             {
                 items: this.items_carrinho,
-                status: 'Recebido'
+                status: 'Recebido',
+                usuario: this.uid,
+                id_pedido: item.key,
+                total_pedido: this.total_carrinho
             }
         );
 
         await this.storage.remove('carrinho');
 
-        this.initialize();
+        await this.initialize();
 
     }
 

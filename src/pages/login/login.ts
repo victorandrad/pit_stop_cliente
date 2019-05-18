@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams, ViewController} from 'ionic-angular';
 import * as firebase from 'firebase';
 import {Storage} from "@ionic/storage";
+import {HomePage} from "../home/home";
 
 @Component({
     selector: 'page-login',
@@ -13,6 +14,7 @@ export class LoginPage {
     senha: string;
 
     constructor(public navCtrl: NavController,
+                public viewCtrl: ViewController,
                 public navParams: NavParams,
                 public storage: Storage) {
     }
@@ -27,9 +29,11 @@ export class LoginPage {
     }
 
     entrar() {
-        firebase.auth().signInWithEmailAndPassword(this.email, this.senha).then(data => {
+        firebase.auth().signInWithEmailAndPassword(this.email, this.senha).then(async data => {
             if (data['user']['uid'] !== null || data['user']['uid'] !== undefined) {
-                this.storage.set('logado', true);
+                await this.storage.set('logado', true);
+                await this.navCtrl.push(HomePage);
+                this.viewCtrl.dismiss();
             }
         });
     }
