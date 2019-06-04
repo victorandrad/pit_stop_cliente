@@ -1,7 +1,9 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams, ViewController} from 'ionic-angular';
 import * as firebase from 'firebase';
 import {Storage} from "@ionic/storage";
+import {HomePage} from "../home/home";
+import {CadastroPage} from "../cadastro/cadastro";
 
 @Component({
     selector: 'page-login',
@@ -14,6 +16,7 @@ export class LoginPage {
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
+                public viewCtrl: ViewController,
                 public storage: Storage) {
     }
 
@@ -30,7 +33,13 @@ export class LoginPage {
         firebase.auth().signInWithEmailAndPassword(this.email, this.senha).then(data => {
             if (data['user']['uid'] !== null || data['user']['uid'] !== undefined) {
                 this.storage.set('logado', true);
+                this.navCtrl.push(HomePage);
+                this.viewCtrl.dismiss();
             }
         });
+    }
+
+    cadastro() {
+        this.navCtrl.push(CadastroPage, '');
     }
 }

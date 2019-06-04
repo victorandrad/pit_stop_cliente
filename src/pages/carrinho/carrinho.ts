@@ -75,6 +75,24 @@ export class CarrinhoPage {
 
     async addPedido() {
 
+        this.alertCtrl.create({
+            title: 'Atenção',
+            message: 'Deseja confirmar este pedido?',
+            buttons: [
+                {
+                    text: 'Não'
+                },
+                {
+                    text: 'Sim',
+                    handler: () => {
+                        this.sendPedido();
+                    }
+                }
+            ]
+        }).present();
+    }
+
+    async sendPedido(){
         await firebase.auth().onAuthStateChanged(data => {
             this.uid = data.uid;
         });

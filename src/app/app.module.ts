@@ -12,6 +12,7 @@ import {DetalhesLanchesPage} from "../pages/detalhes-lanches/detalhes-lanches";
 import {LoginPage} from "../pages/login/login";
 import {IonicStorageModule} from "@ionic/storage";
 import {CarrinhoPage} from "../pages/carrinho/carrinho";
+import {CadastroPage} from "../pages/cadastro/cadastro";
 
 registerLocaleData(localePt);
 
@@ -22,7 +23,8 @@ registerLocaleData(localePt);
         TabsPage,
         LoginPage,
         DetalhesLanchesPage,
-        CarrinhoPage
+        CarrinhoPage,
+        CadastroPage
     ],
     imports: [
         BrowserModule,
@@ -39,7 +41,8 @@ registerLocaleData(localePt);
         TabsPage,
         LoginPage,
         DetalhesLanchesPage,
-        CarrinhoPage
+        CarrinhoPage,
+        CadastroPage
     ],
     providers: [
         StatusBar,
